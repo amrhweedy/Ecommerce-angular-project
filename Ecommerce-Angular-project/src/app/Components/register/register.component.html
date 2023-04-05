@@ -1,0 +1,41 @@
+<form [formGroup]="register">
+  <input
+    class="field"
+    type="text"
+    placeholder="User Name"
+    formControlName="username"
+  />
+  <span
+    *ngIf="
+      register.get('username')?.invalid && register.get('username')?.touched
+    "
+    style="color: rgb(202, 69, 69)"
+    >you should enter valid user name</span
+  >
+
+  <input
+    class="field"
+    type="email"
+    placeholder="User Email"
+    formControlName="email"
+  />
+  <span
+    *ngIf="register.get('email')?.invalid && register.get('email')?.touched"
+    style="color: rgb(202, 69, 69)"
+    >you should enter valid email</span
+  >
+
+  <input
+    class="field"
+    type="password"
+    placeholder="Password"
+    formControlName="pass"
+  />
+  <span
+    *ngIf="register.get('pass')?.invalid && register.get('pass')?.touched"
+    style="color: rgb(202, 69, 69)"
+    >you should enter valid password</span
+  >
+
+  <button [disabled]="!register.valid">Sign Up</button>
+</form>

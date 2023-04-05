@@ -1,0 +1,84 @@
+<mat-sidenav-container fullscreen>
+  <app-navbar> </app-navbar>
+  <mat-icon (click)="sidenav.toggle()" class="sidenav-menu move text-light"
+    >menu</mat-icon
+  >
+
+  <mat-sidenav
+    #sidenav
+    mode="side"
+    class="example-sidenav"
+    [ngStyle]="{ 'width.em': sidenavWidth }"
+    opened="true"
+    (mouseenter)="increase()"
+    (mouseleave)="decrease()"
+  >
+    <div class="d-flex justify-content-center my-3">
+      <img
+        src="assets/Images/Admin/images.jfif"
+        alt="mdo"
+        width="24"
+        height="24"
+        class="rounded-circle"
+      />
+    </div>
+    <mat-nav-list>
+      <mat-list-item routerLink="dashboard" routerLinkActive="active">
+        <mat-icon mat-list-icon>apps</mat-icon>
+        <span *ngIf="sidenavWidth > 6" class="do px-2">Dashboard</span>
+      </mat-list-item>
+      <mat-list-item routerLink="dashboard" routerLinkActive="active">
+        <mat-icon mat-list-icon>poll</mat-icon>
+        <span *ngIf="sidenavWidth > 6" class="do px-2">
+          <a
+            *ngIf="sidenavWidth > 6"
+            class="do px-2"
+            class="nav-link"
+            [routerLink]="['products']"
+            ><mat-icon mat-list-icon>poll</mat-icon>Products</a
+          ></span
+        >
+      </mat-list-item>
+      <mat-list-item routerLink="1" routerLinkActive="active">
+        <mat-icon mat-list-icon>group</mat-icon>
+        <span *ngIf="sidenavWidth > 6" class="do px-2">
+          <a
+            *ngIf="sidenavWidth > 6"
+            class="do px-2"
+            class="nav-link"
+            [routerLink]="['customers']"
+            ><mat-icon mat-list-icon>group</mat-icon>Customers</a
+          ></span
+        >
+      </mat-list-item>
+      <mat-list-item routerLink="1" routerLinkActive="active">
+        <mat-icon mat-list-icon>shopping_cart</mat-icon>
+        <span *ngIf="sidenavWidth > 6" class="do px-2">
+          <a
+            *ngIf="sidenavWidth > 6"
+            class="do px-2"
+            class="nav-link"
+            [routerLink]="['orders']"
+            ><mat-icon mat-list-icon>shopping_cart</mat-icon>Orders</a
+          ></span
+        >
+      </mat-list-item>
+      <mat-list-item
+        routerLink="1"
+        routerLinkActive="active"
+        class="border-top"
+      >
+        <mat-icon mat-list-icon>settings</mat-icon>
+        <span *ngIf="sidenavWidth > 6" class="do px-2">Settings</span>
+      </mat-list-item>
+      <mat-list-item routerLink="1" routerLinkActive="active">
+        <mat-icon mat-list-icon>person</mat-icon>
+        <span *ngIf="sidenavWidth > 6" class="do px-2">Profile</span>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <div class="example-sidenav-content">
+    <router-outlet></router-outlet>
+  </div>
+</mat-sidenav-container>

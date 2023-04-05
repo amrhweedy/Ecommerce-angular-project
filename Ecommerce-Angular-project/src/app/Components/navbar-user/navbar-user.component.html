@@ -1,0 +1,52 @@
+<div class="navbar">
+  <div class="container">
+    <div class="logo"></div>
+    <div class="links">
+      <ul class="first-ul">
+        <li>
+          <a href="#"> Home</a>
+        </li>
+        <li>
+          <a href="#">Shop</a>
+        </li>
+        <li>
+          <a href="">Product</a>
+        </li>
+      </ul>
+      <ul class="center-ul">
+        <li class="fs-4">Helendo</li>
+      </ul>
+      <ul class="second-ul">
+        <li>
+          <a href="./about.html">About</a>
+        </li>
+        <li>
+          <a href="./contact.html">Contact Us</a>
+        </li>
+        <li>
+          <a
+            [matMenuTriggerFor]="menu"
+            aria-label="Example icon-button with a menu"
+          >
+            <mat-icon>account_circle</mat-icon>
+        </a>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="openEditor()">
+              <mat-icon>person</mat-icon>
+              <span >User Login</span>
+            </button>
+            <button mat-menu-item (click)="openAdmin()">
+              <mat-icon>person_outline</mat-icon>
+              <span>Admin Login</span>
+            </button>
+          </mat-menu>
+        </li>
+        <li class="li-counter">
+          <div class="counter">0</div>
+          <mat-icon>shopping_cart</mat-icon>
+        </li>
+      </ul>
+    </div>
+  </div>
+        
+</div>

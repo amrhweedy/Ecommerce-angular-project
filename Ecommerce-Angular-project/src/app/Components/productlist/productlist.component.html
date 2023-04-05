@@ -1,0 +1,50 @@
+<div class="p-5 rounded">
+  <div class="container">
+    <h2 class="text-center">Products</h2>
+    <div class="row" *ngFor="let myproduct of products">
+      <div
+        class="col-sm-6 col-md-4 col-lg-4 my-5"
+        *ngFor="let product of myproduct"
+      >
+        <mat-card class="example-card text-center">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title class="text-center">{{
+              product.title
+            }}</mat-card-title>
+          </mat-card-header>
+          <img mat-card-image [src]="product.img" alt="Photo of a Shiba Inu" />
+          <mat-card-content>
+            <div class="lead">{{ product.price }}$</div>
+            <ng-container [ngSwitch]="product.quantity">
+              <div *ngSwitchCase="'1'" class="lead">
+                Only One Piece Available
+              </div>
+              <div *ngSwitchCase="'0'" class="lead">Not Available Now</div>
+              <div *ngSwitchDefault class="lead">
+                {{ product.quantity }} Pieces Available
+              </div>
+            </ng-container>
+          </mat-card-content>
+          <mat-card-actions class="p-4 my-3">
+            <button
+              class="mx-4 btn btn-dark px-4 py-2 w-90"
+              routerLink="addProduct/{{ product._id }}"
+            >
+              <mat-icon>mode_edit</mat-icon>Edit
+            </button>
+            <button
+              class="mx-5 btn btn-danger px-4 py-2 text-light w-90"
+              (click)="handlerDeleteProduct(product._id)"
+            >
+              <mat-icon>delete</mat-icon><span>Delete</span>
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
+<button class="pull-bottom-right bg-primary" mat-fab (click)="onNew()">
+  <mat-icon>add</mat-icon>
+</button>

@@ -1,0 +1,30 @@
+<div class="containerall">
+  <div class="container m-5 p-5 bg-light">
+    <div class="row">
+      <h4 class="text-center p-4"></h4>
+
+      <table class="table">
+        <thead>
+          <tr class="table_row">
+            <th scope="col ">Product</th>
+            <th scope="col ">Product Name</th>
+            <th scope="col ">Quantity</th>
+            <th scope="col ">Price</th>
+            <!-- <th scope="col">Action</th> -->
+          </tr>
+        </thead>
+        <tbody *ngFor="let item of cart">
+            <tr *ngFor="let prod of item.product">
+              <td class="col-md-3" scope="row">
+                <img [src]="prod.img" />
+              </td>
+              <td class="col-md-4">{{ prod.title }}</td>
+              <td class="col-md-3">{{ prod.quantity }}</td>
+              <td class="col-md-2">{{ prod.price }}</td>
+              <!-- <td class="col-md-3">-</td> -->
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

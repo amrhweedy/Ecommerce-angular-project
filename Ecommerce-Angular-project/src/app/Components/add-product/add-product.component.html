@@ -1,0 +1,131 @@
+
+<h2 class="text-center my-2">Add Product</h2>
+
+<div
+  class="container my-5 shadow-lg p-5 bg-body-tertiary rounded w-50 d-flex justify-content-center"
+>
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit($event)">
+    <div class="mb-3">
+      <label for="exampleInputTitle1" class="form-label">Title</label>
+      <input
+        type="username"
+        class="form-control"
+        id="exampleInputTitle1"
+        formControlName="title"
+        placeholder="Title"
+      />
+      <div
+        class="text-danger p-1"
+        *ngIf="
+          productForm.get('title')?.invalid &&
+          (productForm.get('title')?.dirty || productForm.get('title')?.touched)
+        "
+      >
+        Please provide a valid Title.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label"
+        >Description</label
+      >
+      <textarea
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        rows="3"
+        formControlName="desc"
+        placeholder="Product Description"
+      ></textarea>
+      <div
+        class="text-danger p-1"
+        *ngIf="
+          productForm.get('desc')?.invalid &&
+          (productForm.get('desc')?.dirty || productForm.get('desc')?.touched)
+        "
+      >
+        Description must be at least 15 characters.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputImage1" class="form-label">Image</label>
+      <input
+        class="form-control"
+        #imageInput
+        type="file"
+        accept="image/*"
+        formControlName="img"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputCategories1" class="form-label"
+        >Categories
+      </label>
+      <select
+        class="drop-down m-5 p-2 w-50 bg-dark text-light rounded"
+        formControlName="categories"
+      >
+        <ng-container *ngFor="let item of categories">
+          <option>
+            <button class="dropdown-item">
+              {{ item }}
+            </button>
+          </option>
+        </ng-container>
+      </select>
+      <div
+        class="text-danger p-1"
+        *ngIf="
+          productForm.get('categories')?.invalid &&
+          (productForm.get('categories')?.dirty ||
+            productForm.get('categories')?.touched)
+        "
+      >
+        Please Choose Category for The Product.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputQuantity1" class="form-label">Quantity</label>
+      <input
+        type="number"
+        class="form-control"
+        id="exampleInputQuantity1"
+        aria-describedby="emailHelp"
+        formControlName="quantity"
+        placeholder="Product Qauntity"
+      />
+      <div
+        class="text-danger p-1"
+        *ngIf="
+          productForm.get('quantity')?.invalid &&
+          (productForm.get('quantity')?.dirty ||
+            productForm.get('quantity')?.touched)
+        "
+      >
+        Please provide a valid Quantity.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPrice1" class="form-label">Price</label>
+      <input
+        type="number"
+        class="form-control"
+        id="exampleInputPrice1"
+        formControlName="price"
+        placeholder="Product Price"
+      />
+      <div
+        class="text-danger p-1"
+        *ngIf="
+          productForm.get('price')?.invalid &&
+          (productForm.get('price')?.dirty || productForm.get('price')?.touched)
+        "
+      >
+        Please provide a valid Price.
+      </div>
+    </div>
+    <div class="text-center m-4 p-4">
+      <button type="submit" class="btn btn-primary">
+        {{ productId ? "Edit Product" : "Add Product" }}
+      </button>
+    </div>
+  </form>
+</div>

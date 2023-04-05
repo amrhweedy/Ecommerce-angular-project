@@ -1,0 +1,86 @@
+<form [formGroup]="login" (ngSubmit)="onSubmit()">
+  <input
+    class="field"
+    type="email"
+    placeholder="User Email"
+    formControlName="email"
+  />
+
+  <span
+    *ngIf="login.get('email')?.invalid && login.get('email')?.touched"
+    style="color: rgb(202, 69, 69)"
+    >you should enter valid email</span
+  >
+
+  <input
+    class="field"
+    type="password"
+    placeholder="Password"
+    formControlName="pass"
+  />
+  <span
+    *ngIf="login.get('pass')?.invalid && login.get('pass')?.touched"
+    style="color: rgb(202, 69, 69)"
+    >you should enter valid password</span
+  >
+  <br />
+  <div class="check">
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        value=""
+        id="flexCheckDefault"
+      />
+      <label class="form-check-label" for="flexCheckDefault">
+        Remember Me
+      </label>
+    </div>
+    <div>
+      <a href="#">Forget password ?</a>
+    </div>
+  </div>
+  <button type="submit">Login</button>
+</form>
+
+<form [formGroup]="register" (ngSubmit)="onRegister()">
+  <input
+    class="field"
+    type="text"
+    placeholder="User Name"
+    formControlName="username"
+  />
+  <span
+    *ngIf="
+      register.get('username')?.invalid && register.get('username')?.touched
+    "
+    style="color: rgb(202, 69, 69)"
+    >you should enter valid user name</span
+  >
+
+  <input
+    class="field"
+    type="email"
+    placeholder="User Email"
+    formControlName="email"
+  />
+  <span
+    *ngIf="register.get('email')?.invalid && register.get('email')?.touched"
+    style="color: rgb(202, 69, 69)"
+    >you should enter valid email</span
+  >
+
+  <input
+    class="field"
+    type="password"
+    placeholder="Password"
+    formControlName="pass"
+  />
+  <span
+    *ngIf="register.get('pass')?.invalid && register.get('pass')?.touched"
+    style="color: rgb(202, 69, 69)"
+    >you should enter valid password</span
+  >
+
+  <button type="submit">Sign Up</button>
+</form>

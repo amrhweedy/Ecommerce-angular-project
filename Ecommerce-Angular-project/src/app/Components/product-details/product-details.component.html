@@ -1,0 +1,37 @@
+<div class="line"></div>
+<section class="product-details container">
+  <div class="row">
+    <div class="col-md-6">
+      <div>
+        <img mat-card-image [src]="product.img"  />
+      </div>
+    </div>
+    <div class="col-md-5 ps-5 ms-5 py-4">
+      <h5 class="pt-5">{{ product.title }}</h5>
+      <span class="price">{{ product.price }}$</span>
+      <p class="desc">{{ product.desc }}</p>
+      <div class="row">
+        <div class="quantity">
+          <span (click)="changeQuantity('minus')" class="fw-bold pe-4">-</span>
+          <span class="fw-bold px-2">{{ counter }}</span>
+
+          <span (click)="changeQuantity('plus')" class="fw-bold ps-4">+</span>
+        </div>
+        <button
+          class="btn bg-dark rounded-0 text-white mx-3"
+          routerLink="getcart/{{ product._id }}"
+          (click)="addToCart()"
+        >
+          Add to cart
+        </button>
+      </div>
+      <span class="category"
+        >Category:<span style="color: #999">{{
+          product.categories
+        }}</span></span
+      >
+    </div>
+  </div>
+</section>
+
+<!-- " -->

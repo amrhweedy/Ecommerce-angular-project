@@ -1,0 +1,125 @@
+<div class="all">
+  <div class="container">
+    <nav>
+      <div class="log">
+        <ul>
+          <li>
+            <a
+              routerLink="login"
+              (click)="changeColorLog()"
+              [ngClass]="{
+                flag: flag == true
+              }"
+              >Login</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="reg">
+        <ul>
+          <li>
+            <a
+              (click)="changeColor()"
+              [ngClass]="{
+                flag: flag == false
+              }"
+              >Register</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="input">
+      <form [formGroup]="login" *ngIf="flag">
+        <input
+          class="field"
+          type="email"
+          placeholder="User Email"
+          formControlName="email"
+        />
+
+        <span
+          *ngIf="login.get('email')?.invalid && login.get('email')?.touched"
+          style="color: rgb(202, 69, 69)"
+          >you should enter valid email</span
+        >
+
+        <input
+          class="field"
+          type="password"
+          placeholder="Password"
+          formControlName="pass"
+        />
+        <span
+          *ngIf="login.get('pass')?.invalid && login.get('pass')?.touched"
+          style="color: rgb(202, 69, 69)"
+          >you should enter valid password</span
+        >
+        <br />
+        <div class="check">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="flexCheckDefault"
+            />
+            <label class="form-check-label" for="flexCheckDefault">
+              Remember Me
+            </label>
+          </div>
+          <div>
+            <a href="#">Forget password ?</a>
+          </div>
+        </div>
+        <button [disabled]="!login.valid">Login</button>
+      </form>
+
+      <form [formGroup]="register" *ngIf="!flag">
+        <input
+          class="field"
+          type="text"
+          placeholder="User Name"
+          formControlName="username"
+        />
+        <span
+          *ngIf="
+            register.get('username')?.invalid &&
+            register.get('username')?.touched
+          "
+          style="color: rgb(202, 69, 69)"
+          >you should enter valid user name</span
+        >
+
+        <input
+          class="field"
+          type="email"
+          placeholder="User Email"
+          formControlName="email"
+        />
+        <span
+          *ngIf="
+            register.get('email')?.invalid && register.get('email')?.touched
+          "
+          style="color: rgb(202, 69, 69)"
+          >you should enter valid email</span
+        >
+
+        <input
+          class="field"
+          type="password"
+          placeholder="Password"
+          formControlName="pass"
+        />
+        <span
+          *ngIf="register.get('pass')?.invalid && register.get('pass')?.touched"
+          style="color: rgb(202, 69, 69)"
+          >you should enter valid password</span
+        >
+
+        <button [disabled]="!register.valid">Sign Up</button>
+      </form>
+    </div>
+  </div>
+</div>
